@@ -1,10 +1,9 @@
 const multer = require('multer');
 const path = require('path');
 
-// Set destination folder
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, 'uploads/'); // Make sure 'uploads/' folder exists
+    cb(null, 'uploads/'); 
   },
   filename: function (req, file, cb) {
     const uniqueSuffix = Date.now() + '-' + file.originalname;
@@ -20,7 +19,6 @@ const allowedTypes = [
   'audio/3gpp',
   'audio/mp4'
 ];
-// Accept only audio files
 const fileFilter = (req, file, cb) => {
   if (allowedTypes.includes(file.mimetype)) {
     cb(null, true);
@@ -31,5 +29,4 @@ const fileFilter = (req, file, cb) => {
 
 const upload = multer({ storage, fileFilter });
 
-// Export middleware
 module.exports = upload;

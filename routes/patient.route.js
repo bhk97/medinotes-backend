@@ -4,8 +4,8 @@ const verifyToken = require('../middleware');
 
 router.post("/register",UserController.register);
 router.post("/login",UserController.login);
-router.post("/getUser",verifyToken,UserController.getUser);
-router.put("/updateUser/:userid",verifyToken,UserController.updateUser)
+router.post("/getUser",UserController.getUser);
+router.put("/updateUser/:userid",UserController.updateUser)
 
 
 
